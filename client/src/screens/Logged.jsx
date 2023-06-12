@@ -1,4 +1,4 @@
-import { Container, ContainerLogin } from '../styles/Home';
+import { Container, ContainerLogin } from '../styles';
 
 export function Logged() {
   return (

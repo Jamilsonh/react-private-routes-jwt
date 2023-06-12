@@ -1,12 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import {
-  Button,
-  Container,
-  ContainerLogin,
-  InputArea,
-  Login,
-} from '../styles/Home';
+import { Button, Container, ContainerLogin, InputArea, Login } from '../styles';
 import { useAuth } from '../hooks/useAuth';
 import { Link } from 'react-router-dom';
 
@@ -18,7 +12,9 @@ export function LoginPage() {
 
   const { login, logout } = useAuth();
 
-  const handleRegister = () => {
+  {
+    /* 
+    const handleRegister = () => {
     axios
       .post('http://localhost:3001/register', { username, password })
       .then((res) => {
@@ -28,6 +24,8 @@ export function LoginPage() {
         setMessage(err.response.data.message);
       });
   };
+  */
+  }
 
   const handleLogout = () => {
     logout();
@@ -85,7 +83,7 @@ export function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button onClick={handleRegister}>Registrar</Button>
+          <Link to='/register'>Register</Link>
           <Button onClick={handleLogin}>Login</Button>
           {/*<Button onClick={handleVerify}>Verify</Button>*/}
           <Link to='/logged'>

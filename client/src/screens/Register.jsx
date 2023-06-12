@@ -1,12 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import {
-  Button,
-  Container,
-  ContainerLogin,
-  InputArea,
-  Login,
-} from '../styles/Home';
+import { Button, Container, ContainerLogin, InputArea, Login } from '../styles';
 
 export function RegisterPage() {
   const [username, setUsername] = useState('');
