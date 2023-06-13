@@ -2,11 +2,14 @@ import { useState } from 'react';
 import axios from 'axios';
 import {
   ButtonLink,
+  ButtonLogout,
+  ButtonLogoutArea,
   Container,
   ContainerLogin,
   InputArea,
   LoggedArea,
-  Login,
+  LoggedAreaText,
+  LoginArea,
 } from '../styles';
 import { useAuth } from '../hooks/useAuth';
 import { toast } from 'react-toastify';
@@ -22,6 +25,7 @@ export function LoginPage() {
   const handleLogout = () => {
     logout();
     clearFields();
+    toast.warn('Você foi deslogado');
   };
 
   const clearFields = () => {
@@ -35,6 +39,8 @@ export function LoginPage() {
       .then((res) => {
         const { token } = res.data;
         login(token);
+        toast.success('Login efetuado com sucesso');
+        toast.success('Token válido, vocë tem acesso a rota privada');
       })
       .catch((err) => {
         toast.error(err.response.data.message);
@@ -46,7 +52,7 @@ export function LoginPage() {
     const token = localStorage.getItem('token');
     console.log(token);
     if (token) {
-      toast.success('Token válido, você tem acesso a rota privada');
+      toast.success('Token válido');
     } else {
       toast.error(
         '(Sem acesso) Você foi redirecionado para a tela de cadastro.'
@@ -61,17 +67,26 @@ export function LoginPage() {
         <LoggedArea>
           {isAuthenticated ? (
             <>
-              <FaUser size={20} style={{ marginRight: '0px' }} /> {username}
-              <ButtonLink onClick={handleLogout}>SAIR</ButtonLink>
+              <LoggedAreaText>
+                <FaUser size={20} style={{ marginRight: '0px' }} />
+                <div>{username}</div>
+              </LoggedAreaText>
+              <ButtonLogoutArea>
+                <ButtonLogout onClick={handleLogout}>Logout</ButtonLogout>
+              </ButtonLogoutArea>
             </>
           ) : (
             <>
-              <FaUser size={20} style={{ marginRight: '0px' }} /> {'Username'}
+              <LoggedAreaText>
+                <FaUser size={20} style={{ marginRight: '0px' }} /> {'Username'}
+              </LoggedAreaText>
+              <ButtonLogoutArea />
             </>
           )}
         </LoggedArea>
-        <h1>LOGIN</h1>
-        <Login>
+
+        <LoginArea>
+          <h1>LOGIN</h1>
           <InputArea
             type='text'
             placeholder='Username'
@@ -89,9 +104,9 @@ export function LoginPage() {
           <ButtonLink onClick={handleLogin}>Login</ButtonLink>
           <ButtonLink to='/register'>Register</ButtonLink>
           <ButtonLink to='/logged' onClick={ProtectedRoute}>
-            ROTA PRIVADA
+            Página Privada
           </ButtonLink>
-        </Login>
+        </LoginArea>
       </ContainerLogin>
     </Container>
   );

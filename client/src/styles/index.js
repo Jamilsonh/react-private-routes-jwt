@@ -26,16 +26,46 @@ export const LoggedArea = styled.div`
   width: 90%;
   display: flex;
   align-items: center;
+
+  justify-content: space-around;
+`;
+
+export const LoggedAreaText = styled.div`
+  width: 50%;
+  display: flex;
   gap: 10px;
 `;
 
-export const Login = styled.div`
-  width: 80%;
-  height: 200px;
+export const ButtonLogoutArea = styled.div`
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
+export const ButtonLogout = styled(Link)`
+  text-decoration: none;
+  color: black;
+  width: 30%;
+  background-color: white;
+  font-size: 12px;
+  border-radius: 15px;
+  text-align: center;
+  padding: 2px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LoginArea = styled.div`
+  width: 85%;
+  height: 320px;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  border: 2px solid black;
+  border-radius: 25px;
   gap: 10px;
 `;
 
@@ -46,16 +76,10 @@ export const InputArea = styled.input`
   padding: 5px 10px;
 `;
 
-export const Button = styled.button`
-  width: 40%;
-  border-radius: 15px;
-  padding: 2px 0;
-`;
-
 export const ButtonLink = styled(Link)`
   text-decoration: none;
   color: black;
-  width: 30%;
+  width: 40%;
   background-color: white;
   border-radius: 15px;
   text-align: center;
