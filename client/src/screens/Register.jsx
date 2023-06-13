@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Button, Container, ContainerLogin, InputArea, Login } from '../styles';
+import {
+  ButtonLink,
+  Container,
+  ContainerLogin,
+  InputArea,
+  Login,
+} from '../styles';
 
 export function RegisterPage() {
   const [username, setUsername] = useState('');
@@ -35,7 +41,8 @@ export function RegisterPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button onClick={handleRegister}>Registrar</Button>
+          <ButtonLink onClick={handleRegister}>Registrar</ButtonLink>
+          <ButtonLink to='/'>Voltar</ButtonLink>
         </Login>
         <p>{message}</p>
       </ContainerLogin>

@@ -22,6 +22,13 @@ export const ContainerLogin = styled.div`
   padding: 10px;
 `;
 
+export const LoggedArea = styled.div`
+  width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
 export const Login = styled.div`
   width: 80%;
   height: 200px;
@@ -45,7 +52,7 @@ export const Button = styled.button`
   padding: 2px 0;
 `;
 
-export const NavbarLink = styled(Link)`
+export const ButtonLink = styled(Link)`
   text-decoration: none;
   color: black;
   width: 30%;

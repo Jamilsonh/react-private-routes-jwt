@@ -1,27 +1,32 @@
 import { useState } from 'react';
 import axios from 'axios';
 import {
-  Button,
+  ButtonLink,
   Container,
   ContainerLogin,
   InputArea,
+  LoggedArea,
   Login,
-  NavbarLink,
 } from '../styles';
 import { useAuth } from '../hooks/useAuth';
-import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaUser } from 'react-icons/fa';
 
 export function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
 
   const { login, logout, isAuthenticated } = useAuth();
 
   const handleLogout = () => {
     logout();
+    clearFields();
+  };
+
+  const clearFields = () => {
+    setUsername('');
+    setPassword('');
   };
 
   const handleLogin = () => {
@@ -30,12 +35,10 @@ export function LoginPage() {
       .then((res) => {
         const { token } = res.data;
         login(token);
-        setMessage(res.data.message);
       })
       .catch((err) => {
-        setMessage(err.response.data.message);
         toast.error(err.response.data.message);
-        toast.error('ola');
+        toast.error('Faça seu cadastro');
       });
   };
 
@@ -46,47 +49,49 @@ export function LoginPage() {
       toast.success('Token válido, você tem acesso a rota privada');
     } else {
       toast.error(
-        'Você não tem acesso a essa rota, faça seu cadastro e depois faça o login'
+        '(Sem acesso) Você foi redirecionado para a tela de cadastro.'
       );
+      toast.error('Se cadastre e faça o login para ter acesso a rota privada');
     }
   };
 
   return (
     <Container>
       <ContainerLogin>
-        <h1>LOGIN</h1>
-        <div>
+        <LoggedArea>
           {isAuthenticated ? (
-            <h2>Bem-vindo, {username}!</h2>
+            <>
+              <FaUser size={20} style={{ marginRight: '0px' }} /> {username}
+              <ButtonLink onClick={handleLogout}>SAIR</ButtonLink>
+            </>
           ) : (
-            <h2>Você não está logado.</h2>
+            <>
+              <FaUser size={20} style={{ marginRight: '0px' }} /> {'Username'}
+            </>
           )}
-        </div>
+        </LoggedArea>
+        <h1>LOGIN</h1>
         <Login>
           <InputArea
             type='text'
             placeholder='Username'
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            disabled={isAuthenticated}
           />
           <InputArea
             type='password'
             placeholder='Password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            disabled={isAuthenticated}
           />
-          <NavbarLink to='/register' onClick={handleLogin}>
-            Register
-          </NavbarLink>
-          <Button onClick={handleLogin}>Login</Button>
-
-          <Link to='/logged'>
-            <Button onClick={ProtectedRoute}>ROTA PROTEGIDA</Button>
-          </Link>
-          <Button onClick={handleLogout}>Sair</Button>
-          <div></div>
+          <ButtonLink onClick={handleLogin}>Login</ButtonLink>
+          <ButtonLink to='/register'>Register</ButtonLink>
+          <ButtonLink to='/logged' onClick={ProtectedRoute}>
+            ROTA PRIVADA
+          </ButtonLink>
         </Login>
-        <p>{message}</p>
       </ContainerLogin>
     </Container>
   );
