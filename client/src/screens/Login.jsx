@@ -17,24 +17,8 @@ export function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  //const [tokenStatus, setTokenStatus] = useState('');
 
-  const { login, logout } = useAuth();
-
-  {
-    /* 
-    const handleRegister = () => {
-    axios
-      .post('http://localhost:3001/register', { username, password })
-      .then((res) => {
-        setMessage(res.data.message);
-      })
-      .catch((err) => {
-        setMessage(err.response.data.message);
-      });
-  };
-  */
-  }
+  const { login, logout, isAuthenticated } = useAuth();
 
   const handleLogout = () => {
     logout();
@@ -67,32 +51,17 @@ export function LoginPage() {
     }
   };
 
-  /*
-
-  const handleVerify = () => {
-    const token = localStorage.getItem('token');
-    axios
-      .get('http://localhost:3001/protected', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-        setTokenStatus(response.data.message);
-      })
-      .catch((error) => {
-        console.error(error.response.data);
-        setTokenStatus(error.response.data.message);
-      });
-  };
-
-  */
-
   return (
     <Container>
       <ContainerLogin>
         <h1>LOGIN</h1>
+        <div>
+          {isAuthenticated ? (
+            <h2>Bem-vindo, {username}!</h2>
+          ) : (
+            <h2>Você não está logado.</h2>
+          )}
+        </div>
         <Login>
           <InputArea
             type='text'
@@ -110,7 +79,7 @@ export function LoginPage() {
             Register
           </NavbarLink>
           <Button onClick={handleLogin}>Login</Button>
-          {/*<Button onClick={handleVerify}>Verify</Button>*/}
+
           <Link to='/logged'>
             <Button onClick={ProtectedRoute}>ROTA PROTEGIDA</Button>
           </Link>
@@ -118,7 +87,6 @@ export function LoginPage() {
           <div></div>
         </Login>
         <p>{message}</p>
-        {/*<p>{tokenStatus}</p>*/}
       </ContainerLogin>
     </Container>
   );
