@@ -1,8 +1,17 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Button, Container, ContainerLogin, InputArea, Login } from '../styles';
+import {
+  Button,
+  Container,
+  ContainerLogin,
+  InputArea,
+  Login,
+  NavbarLink,
+} from '../styles';
 import { useAuth } from '../hooks/useAuth';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function LoginPage() {
   const [username, setUsername] = useState('');
@@ -41,7 +50,21 @@ export function LoginPage() {
       })
       .catch((err) => {
         setMessage(err.response.data.message);
+        toast.error(err.response.data.message);
+        toast.error('ola');
       });
+  };
+
+  const ProtectedRoute = () => {
+    const token = localStorage.getItem('token');
+    console.log(token);
+    if (token) {
+      toast.success('Token válido, você tem acesso a rota privada');
+    } else {
+      toast.error(
+        'Você não tem acesso a essa rota, faça seu cadastro e depois faça o login'
+      );
+    }
   };
 
   /*
@@ -69,7 +92,7 @@ export function LoginPage() {
   return (
     <Container>
       <ContainerLogin>
-        <h1>AUTHENTICATION</h1>
+        <h1>LOGIN</h1>
         <Login>
           <InputArea
             type='text'
@@ -83,13 +106,16 @@ export function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Link to='/register'>Register</Link>
+          <NavbarLink to='/register' onClick={handleLogin}>
+            Register
+          </NavbarLink>
           <Button onClick={handleLogin}>Login</Button>
           {/*<Button onClick={handleVerify}>Verify</Button>*/}
           <Link to='/logged'>
-            <Button>ROTA PROTEGIDA</Button>
+            <Button onClick={ProtectedRoute}>ROTA PROTEGIDA</Button>
           </Link>
           <Button onClick={handleLogout}>Sair</Button>
+          <div></div>
         </Login>
         <p>{message}</p>
         {/*<p>{tokenStatus}</p>*/}

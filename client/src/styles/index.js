@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -41,5 +42,15 @@ export const InputArea = styled.input`
 export const Button = styled.button`
   width: 40%;
   border-radius: 15px;
+  padding: 2px 0;
+`;
+
+export const NavbarLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  width: 30%;
+  background-color: white;
+  border-radius: 15px;
+  text-align: center;
   padding: 2px 0;
 `;
