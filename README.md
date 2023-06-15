@@ -31,6 +31,7 @@ Esse projeto tem como finalidade o aprendizado de tecnologias como JWT e rotas p
   2. `$ cd server`
   3. `$ npm install` or `$ yarn`
   4. `$ npm rum devStart`
+  5. `$ nodemon index.js`
 
 ## 🛠️ Technologies
 
@@ -46,6 +47,7 @@ BACK END
 + `CORS`
 + `JSONWEBTOKEN`
 + `MYSQL2`
++ `NODEMON`
 
 ### 📋 Status Do Projeto
 
