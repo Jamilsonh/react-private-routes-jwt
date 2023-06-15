@@ -5,7 +5,7 @@ import {
   Container,
   ContainerLogin,
   InputArea,
-  Login,
+  LoginArea,
 } from '../styles';
 
 export function RegisterPage() {
@@ -28,7 +28,7 @@ export function RegisterPage() {
     <Container>
       <ContainerLogin>
         <h1>REGISTER</h1>
-        <Login>
+        <LoginArea>
           <InputArea
             type='text'
             placeholder='Username'
@@ -43,7 +43,7 @@ export function RegisterPage() {
           />
           <ButtonLink onClick={handleRegister}>Registrar</ButtonLink>
           <ButtonLink to='/'>Voltar</ButtonLink>
-        </Login>
+        </LoginArea>
         <p>{message}</p>
       </ContainerLogin>
     </Container>

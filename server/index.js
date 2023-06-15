@@ -75,7 +75,7 @@ app.post('/login', (req, res) => {
       }
 
       if (results.length === 0) {
-        return res.status(401).json({ message: 'Usuário não encontrado' });
+        return res.status(401).json({ message: 'Usuário ou senha inválidos' });
       }
 
       // Comparar a senha fornecida com a senha armazenada no banco de dados
@@ -85,7 +85,9 @@ app.post('/login', (req, res) => {
         }
 
         if (!match) {
-          return res.status(401).json({ message: 'Senha incorreta' });
+          return res
+            .status(401)
+            .json({ message: 'Usuário ou senha inválidos' });
         }
 
         // Gerar um token JWT

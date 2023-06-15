@@ -44,7 +44,7 @@ export function LoginPage() {
       })
       .catch((err) => {
         toast.error(err.response.data.message);
-        toast.error('Faça seu cadastro');
+        toast.error('Senão tiver uma conta, faça o seu cadastro');
       });
   };
 
