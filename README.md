@@ -6,7 +6,16 @@ Esse projeto tem como finalidade o aprendizado de tecnologias como JWT e rotas p
 
 
 
-### 🔧 Comandos Necessários
+## 🔧 Installation
+
+
+### MySQL
+
+  1. In your mySQL create a database, example:
+  
+   <p align="center">
+      <img src="client/src/assets/readme/bancoauth.png" width="600px">
+    </p>
 
 ### Client
 
@@ -15,13 +24,15 @@ Esse projeto tem como finalidade o aprendizado de tecnologias como JWT e rotas p
   3. `$ npm start` or `$ yarn start`
   
 ### Server
-
-  1. Change your mySQL database data `server/index.js`
+  1. Change the database connection to the database you created in the `server/index.js` file
+    <p align="center">
+      <img src="client/src/assets/readme/bancoconnect.png" width="600px">
+    </p>
   2. `$ cd server`
   3. `$ npm install` or `$ yarn`
   4. `$ npm rum devStart`
 
-### 🛠️ Tecnologias 
+## 🛠️ Technologies
 
 FRONT END
 + `Axios`
