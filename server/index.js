@@ -9,10 +9,10 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'user',
-  password: 'pass32Wor@',
-  database: 'auth',
+  host: 'localhost', // alterar para o seu host
+  user: 'user', // alterar para o seu usuário
+  password: 'pass32Wor@', // alterar para a sua senha
+  database: 'auth', // alterar para o seu banco de dados
 });
 
 db.connect((err) => {
@@ -63,7 +63,7 @@ app.post('/register', (req, res) => {
   );
 });
 
-// Rota de login
+// Rota de login de usuário
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
 
@@ -124,33 +124,10 @@ function verifyToken(req, res, next) {
   });
 }
 
-// Rota protegida que verifica o token
+// Rota protegida
 app.get('/protected', verifyToken, (req, res) => {
   res.status(200).json({ message: 'Token válido' });
 });
-
-/*
-function verifyToken(req, res, next) {
-  const { authorization } = req.headers;
-
-  if (!authorization) {
-    return res.status(401).json({ message: 'Token JWT não fornecido' });
-  }
-
-  jwt.verify(token, 'jwt', (err, decoded) => {
-    if (err) {
-      return res.status(401).json({ message: 'Token JWT inválido' });
-    }
-
-    req.username = decoded.username;
-    next();
-  });
-}
-
-app.get('/private', verifyToken, (req, res) => {
-  res.json({ message: 'Você está autenticado' });
-});
-*/
 
 app.listen(3001, () => {
   console.log('Servidor iniciado na porta 3001');
