@@ -2,26 +2,49 @@
 
 Esse projeto tem como finalidade o aprendizado de tecnologias como JWT e rotas privadas
 
-### 🛠️ Tecnologias 
 
-FRONT-END
-- AXIOS
-- JWT DECODE
-- REACT ROUTER DOM
-- REACT TOASTIFY
-- STYLED-COMPONENTS
 
-BACK-END
-- BCRYPT
-- CORS
-- EXPRESS
-- JSONWEBTOKEN
-- MYSQL2
+
 
 ### 🔧 Comandos Necessários
 
-- Em construção...
+### Client
+
+  1. `$ cd client`
+  2. `$ npm install` or `$ yarn install`
+  3. `$ npm start` or `$ yarn start`
+  
+### Server
+
+  1. Change your mySQL database data `server/index.js`
+  2. `$ cd server`
+  3. `$ npm install` or `$ yarn`
+  4. `$ npm rum devStart`
+
+### 🛠️ Tecnologias 
+
+FRONT END
++ `Axios`
++ `JWT Decode` 
++ `REACT ROUTER DOM`
++ `REACT TOASTIFY`
++ `STYLED-COMPONENTS`
+
+BACK END
++ `BCRYPT`
++ `CORS`
++ `JSONWEBTOKEN`
++ `MYSQL2`
 
 ### 📋 Status Do Projeto
 
 - Em construção...
+
+
+
+
+  
+  
+
+
+
