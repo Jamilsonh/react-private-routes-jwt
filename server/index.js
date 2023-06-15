@@ -19,7 +19,7 @@ db.connect((err) => {
   if (err) {
     throw err;
   }
-  console.log('Conectado ao banco de dados!');
+  console.log('Connected to the database!');
 });
 
 // Rota de registro de usuário
@@ -38,7 +38,7 @@ app.post('/register', (req, res) => {
       if (results.length > 0) {
         return res
           .status(409)
-          .json({ message: 'Usuário já existe, tente outro nome de usuário' });
+          .json({ message: 'User already exists, try another username' });
       }
 
       // Criptografar a senha antes de armazená-la no banco de dados
@@ -55,7 +55,7 @@ app.post('/register', (req, res) => {
             if (err) {
               throw err;
             }
-            res.status(201).json({ message: 'Usuário registrado com sucesso' });
+            res.status(201).json({ message: 'Successfully registered user' });
           }
         );
       });
@@ -77,7 +77,9 @@ app.post('/login', (req, res) => {
       }
 
       if (results.length === 0) {
-        return res.status(401).json({ message: 'Usuário ou senha inválidos' });
+        return res
+          .status(401)
+          .json({ message: 'Username or password is invalid' });
       }
 
       // Comparar a senha fornecida com a senha armazenada no banco de dados
@@ -89,7 +91,7 @@ app.post('/login', (req, res) => {
         if (!match) {
           return res
             .status(401)
-            .json({ message: 'Usuário ou senha inválidos' });
+            .json({ message: 'Username or password is invalid' });
         }
 
         // Gerar um token JWT
@@ -126,9 +128,9 @@ function verifyToken(req, res, next) {
 
 // Rota protegida
 app.get('/protected', verifyToken, (req, res) => {
-  res.status(200).json({ message: 'Token válido' });
+  res.status(200).json({ message: 'Your Token is valid' });
 });
 
 app.listen(3001, () => {
-  console.log('Servidor iniciado na porta 3001');
+  console.log('Server started on port 3001');
 });

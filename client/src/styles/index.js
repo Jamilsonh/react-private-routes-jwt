@@ -85,3 +85,13 @@ export const ButtonLink = styled(Link)`
   text-align: center;
   padding: 2px 0;
 `;
+
+export const LoggedContainer = styled.div`
+  width: 80%;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+`;

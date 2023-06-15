@@ -25,7 +25,7 @@ export function LoginPage() {
   const handleLogout = () => {
     logout();
     clearFields();
-    toast.warn('Você foi deslogado');
+    toast.warn('You have been logged out');
   };
 
   const clearFields = () => {
@@ -39,12 +39,12 @@ export function LoginPage() {
       .then((res) => {
         const { token } = res.data;
         login(token);
-        toast.success('Login efetuado com sucesso');
-        toast.success('Token válido, vocë tem acesso a rota privada');
+        toast.success('Login successful');
+        toast.success('Valid token, you have access to private route');
       })
       .catch((err) => {
         toast.error(err.response.data.message);
-        toast.error('Senão tiver uma conta, faça o seu cadastro');
+        toast.error('If you do not have an account, register');
       });
   };
 
@@ -52,12 +52,11 @@ export function LoginPage() {
     const token = localStorage.getItem('token');
     console.log(token);
     if (token) {
-      toast.success('Token válido');
+      toast.success('Your Token is valid');
     } else {
-      toast.error(
-        '(Sem acesso) Você foi redirecionado para a tela de cadastro.'
-      );
-      toast.error('Se cadastre e faça o login para ter acesso a rota privada');
+      toast.error('No private route access');
+      toast.error('Register and login to access the private route');
+      toast.error('You have been redirected to the registration screen.');
     }
   };
 
@@ -104,7 +103,7 @@ export function LoginPage() {
           <ButtonLink onClick={handleLogin}>Login</ButtonLink>
           <ButtonLink to='/register'>Register</ButtonLink>
           <ButtonLink to='/logged' onClick={ProtectedRoute}>
-            Página Privada
+            Private Route
           </ButtonLink>
         </LoginArea>
       </ContainerLogin>
