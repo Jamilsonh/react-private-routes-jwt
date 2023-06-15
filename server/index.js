@@ -36,7 +36,9 @@ app.post('/register', (req, res) => {
       }
 
       if (results.length > 0) {
-        return res.status(409).json({ message: 'Usuário já existe' });
+        return res
+          .status(409)
+          .json({ message: 'Usuário já existe, tente outro nome de usuário' });
       }
 
       // Criptografar a senha antes de armazená-la no banco de dados
