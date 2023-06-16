@@ -1,6 +1,6 @@
 # react-private-routes-jwt
 
-Esse projeto tem como finalidade o aprendizado de tecnologias como JWT e rotas privadas
+I developed this project in order to study and better understand how the token authentication system works using JWT, and also to better understand private routes, I could understand more about middlewares, and the back-end verification system.
 
 
 
