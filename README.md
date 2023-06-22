@@ -20,8 +20,8 @@ I developed this project in order to study and better understand how the token a
 ### Client
 
   1. `$ cd client`
-  2. `$ npm install` or `$ yarn install`
-  3. `$ npm start` or `$ yarn start`
+  2. `$ yarn`
+  3. `$ yarn dev`
   
 ### Server
   1. Change the database connection to the database you created in the `server/index.js` file
@@ -29,9 +29,8 @@ I developed this project in order to study and better understand how the token a
       <img src="client/src/assets/readme/bancoconnect.png" width="600px">
     </p>
   2. `$ cd server`
-  3. `$ npm install` or `$ yarn`
-  4. `$ npm rum devStart`
-  5. `$ nodemon index.js`
+  3. `$ yarn`
+  4. `$ nodemon index.js`
 
 ## 🛠️ Technologies
 
@@ -53,7 +52,7 @@ BACK END
 
 ### 📋 Status Do Projeto
 
-- Em construção...
+- Finalizado ✔️
 
 
 
