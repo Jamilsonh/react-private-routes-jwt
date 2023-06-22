@@ -36,14 +36,15 @@ I developed this project in order to study and better understand how the token a
 ## 🛠️ Technologies
 
 FRONT END
-+ `Axios`
-+ `JWT Decode` 
++ `AXIOS`
++ `JWT DECODE`
 + `REACT ROUTER DOM`
 + `REACT TOASTIFY`
 + `STYLED-COMPONENTS`
 
 BACK END
 + `BCRYPT`
++ `EXPRESS`
 + `CORS`
 + `JSONWEBTOKEN`
 + `MYSQL2`
