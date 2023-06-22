@@ -41,7 +41,9 @@ export function RegisterPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <ButtonLink onClick={handleRegister}>Registrar</ButtonLink>
+          <ButtonLink onClick={handleRegister} to='/'>
+            Registrar
+          </ButtonLink>
           <ButtonLink to='/'>Voltar</ButtonLink>
         </LoginArea>
       </ContainerLogin>
